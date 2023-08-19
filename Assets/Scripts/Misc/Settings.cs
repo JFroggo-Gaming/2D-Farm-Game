@@ -2,6 +2,11 @@ using UnityEngine;
 
 public static class Settings
 {   
+    // Obscuring Item Fading - ObscuringItemFader(this is to make items transparent when we walk behind them)
+    public const float fadeInSeconds = 0.25f;
+    public const float fadeOutSeconds = 0.35f;
+    public const float targetAlpha = 0.45f;   // how transparent the item is going to be once it's faded
+
     // Player movement
 
     public const float runningspeed = 5.333f;

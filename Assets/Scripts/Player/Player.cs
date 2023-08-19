@@ -33,9 +33,9 @@ public class Player : SingletonMonobehaviour<Player>
 
 
     private Rigidbody2D rigidBody2D; // Reference to the RigidBody2D component attached to the player (Typo: should be "RigidBody2D" instead of "RigidBody2D")
-
+#pragma warning disable 414
     private Direction playerDirection; // Current direction the player is facing
-
+#pragma warning restore 414
     private float movementSpeed; // Speed of the player's movement
 
     private bool _playerInputIsDisabled = false; // Flag indicating if the player input is disabled
