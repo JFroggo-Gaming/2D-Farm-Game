@@ -6,7 +6,7 @@ public class ItemDetails
    public int itemCode;
    public ItemType itemType;
    public string itemDescription;
-   public Spritem itemSprite;
+   public Sprite itemSprite;
    public string itemLongDescription;
    public short itemUseGridRadius;
    public float itemUseRadius;
