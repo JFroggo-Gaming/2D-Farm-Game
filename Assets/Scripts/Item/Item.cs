@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class Item : MonoBehaviour
-{   
+{
     [ItemCodeDescription]
     [SerializeField]
     private int _itemCode;
@@ -19,13 +19,26 @@ public class Item : MonoBehaviour
     {
         if (ItemCode != 0)
         {
-            Init(ItemCode); 
+            Init(ItemCode);
         }
     }
 
-    public void Init(int itemCodeParam)
+    public void Init (int itemCodeParam)
     {
-        // Wprowadź logikę inicjalizacji obiektu na podstawie podanego kodu przedmiotu (itemCodeParam)
-        // Na przykład, można przypisać odpowiedni sprite do spriteRenderer na podstawie kodu.
+        if (itemCodeParam != 0)
+        {
+            ItemCode = itemCodeParam;
+
+            ItemDetails itemDetails = InventoryManager.Instance.GetItemDetails(ItemCode);
+
+            spriteRenderer.sprite = itemDetails.itemSprite;
+
+            // If item type is reapable then add nudgeable component
+            if (itemDetails.itemType == ItemType.Reapable_scenary)
+            {
+                gameObject.AddComponent<ItemNudge>();
+            }
+        }
     }
 }
+

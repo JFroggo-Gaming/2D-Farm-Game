@@ -7,8 +7,11 @@ public class InventoryManager : SingletonMonobehaviour<InventoryManager>
     
     [SerializeField] private SO_ItemList itemList = null; //  is a reference to a Scriptable Object called SO_ItemList, which holds a list of ItemDetails.
 
-    private void Start()
+
+    protected override void Awake()
     {
+        base.Awake();
+
         // Create item details dictionary
         CreateItemDetailsDictionary();
     }
