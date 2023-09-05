@@ -1,7 +1,8 @@
 using UnityEngine;
 
 public class Item : MonoBehaviour
-{
+{   
+    [ItemCodeDescription]
     [SerializeField]
     private int _itemCode;
 
@@ -18,7 +19,7 @@ public class Item : MonoBehaviour
     {
         if (ItemCode != 0)
         {
-            Init(ItemCode); // Poprawione "Inint" na "Init"
+            Init(ItemCode); 
         }
     }
 
