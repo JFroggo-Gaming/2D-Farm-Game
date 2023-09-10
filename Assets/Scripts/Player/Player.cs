@@ -31,7 +31,7 @@ public class Player : SingletonMonobehaviour<Player>
     private bool idleLeft; // Flag indicating if the player is idle facing left
     private bool idleRight; // Flag indicating if the player is idle facing right
 
-
+    private Camera mainCamera;
     private Rigidbody2D rigidBody2D; // Reference to the RigidBody2D component attached to the player (Typo: should be "RigidBody2D" instead of "RigidBody2D")
 #pragma warning disable 414
     private Direction playerDirection; // Current direction the player is facing
@@ -47,6 +47,8 @@ public class Player : SingletonMonobehaviour<Player>
         base.Awake();
 
         rigidBody2D = GetComponent<Rigidbody2D>(); // Get the rigidBbody2D component
+
+        mainCamera = Camera.main;
     }
 
     private void Update()
@@ -177,6 +179,12 @@ public class Player : SingletonMonobehaviour<Player>
         isIdle = false;
         movementSpeed = Settings.runningspeed; // Set movement speed to the running speed defined in the "Settings" class
     }
+}
+
+public Vector3 GetPlayerViewportPosition()
+{
+    // Vector3 viewport position for player ((0,0) viewport bottom left, (1,1) viewport top right
+    return mainCamera.WorldToViewportPoint(transform.position);
 }
 
 }
