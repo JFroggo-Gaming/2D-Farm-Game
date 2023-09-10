@@ -89,11 +89,11 @@ public class InventoryManager : SingletonMonobehaviour<InventoryManager>
     {
         InventoryItem inventoryItem = new InventoryItem();
 
-        inventoryItem.ItemCode = itemCode;
-        inventoryItem.ItemQuantity = 1;
+        inventoryItem.itemCode = itemCode;
+        inventoryItem.itemQuantity = 1;
         inventoryList.Add(inventoryItem);
 
-        DebugPrintInventoryList(inventoryList);
+       // DebugPrintInventoryList(inventoryList);
     }
 
     /// <summary>
@@ -103,12 +103,12 @@ public class InventoryManager : SingletonMonobehaviour<InventoryManager>
     {
         InventoryItem inventoryItem = new InventoryItem();
 
-        int quantity = inventoryList[position].ItemQuantity + 1;
-        inventoryItem.ItemQuantity = quantity;
-        inventoryItem.ItemCode = itemCode;
+        int quantity = inventoryList[position].itemQuantity + 1;
+        inventoryItem.itemQuantity = quantity;
+        inventoryItem.itemCode = itemCode;
         inventoryList[position] = inventoryItem;
 
-        DebugPrintInventoryList(inventoryList);
+        //DebugPrintInventoryList(inventoryList);
     }
 
     /// <summary>
@@ -121,7 +121,7 @@ public class InventoryManager : SingletonMonobehaviour<InventoryManager>
 
         for (int i = 0; i < inventoryList.Count; i++)
         {
-            if (inventoryList[i].ItemCode == itemCode)
+            if (inventoryList[i].itemCode == itemCode)
             {
                 return i;
             }
@@ -143,12 +143,12 @@ public class InventoryManager : SingletonMonobehaviour<InventoryManager>
         }
     }
 
-    private void DebugPrintInventoryList(List<InventoryItem> inventoryList)
+    /* private void DebugPrintInventoryList(List<InventoryItem> inventoryList)
     {   
         foreach (InventoryItem inventoryItem in inventoryList)
         {
-            Debug.Log("Item Description: " + GetItemDetails(inventoryItem.ItemCode).itemDescription + "      Item Quantity: " + inventoryItem.ItemQuantity);
+            Debug.Log("Item Description: " + GetItemDetails(inventoryItem.itemCode).itemDescription + "      Item Quantity: " + inventoryItem.itemQuantity);
         }
         Debug.Log("*****************************************************");
-    }
+    } */
 }

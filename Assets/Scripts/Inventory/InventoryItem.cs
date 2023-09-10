@@ -1,6 +1,6 @@
 [System.Serializable]
 public struct InventoryItem
 {
-    public int ItemCode;
-    public int ItemQuantity;
+    public int itemCode;
+    public int itemQuantity;
 }
