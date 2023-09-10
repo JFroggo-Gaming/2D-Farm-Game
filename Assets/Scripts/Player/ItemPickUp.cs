@@ -4,23 +4,19 @@ public class ItemPickUp : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Upewnij się, że obiekt, który wchodzi w kolizję, ma komponent Item
         Item item = collision.GetComponent<Item>();
 
         if (item != null)
         {
-            // Pobierz szczegóły przedmiotu
+            // Get item details
             ItemDetails itemDetails = InventoryManager.Instance.GetItemDetails(item.ItemCode);
 
-            if (itemDetails != null)
+            // if item can be picked up
+            if (itemDetails.canBePickedUp == true)
             {
-                // Wyświetl opis przedmiotu w konsoli
-                Debug.Log(itemDetails.itemDescription);
-            }
-            else
-            {
-                // Jeśli nie można znaleźć szczegółów przedmiotu, wyświetl błąd
-                Debug.LogError("Nie można znaleźć szczegółów przedmiotu dla kodu: " + item.ItemCode);
+                // Add item to inventory
+                InventoryManager.Instance.AddItem(InventoryLocation.player, item, collision.gameObject);
+
             }
         }
     }

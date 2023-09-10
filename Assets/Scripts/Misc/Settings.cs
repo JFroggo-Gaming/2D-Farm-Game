@@ -11,6 +11,10 @@ public static class Settings
 
     public const float runningspeed = 5.333f;
     public const float walkingspeed = 3.666f;
+
+    // Inventory
+    public static int playerInitialInventoryCapacity = 24;
+    public static int playerMaximumInventoryCapacity = 48;
     
     // Player Animation Parameters
     public static int xInput;
