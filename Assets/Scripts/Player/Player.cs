@@ -54,6 +54,8 @@ public class Player : SingletonMonobehaviour<Player>
     private void Update()
     {
         #region Player Input
+        if(!PlayerInputIsDisabled)
+        {
 
         ResetAnimationTriggers(); // Reset all animation triggers before processing player input
 
@@ -72,7 +74,7 @@ public class Player : SingletonMonobehaviour<Player>
                 isPickingRight, isPickingLeft, isPickingUp, isPickingDown,
                 isSwingingToolRight, isSwingingToolLeft, isSwingingToolUp, isSwingingToolDown,
                 false, false, false, false);
-
+        }
         #endregion
     }
 
@@ -180,7 +182,36 @@ public class Player : SingletonMonobehaviour<Player>
         movementSpeed = Settings.runningspeed; // Set movement speed to the running speed defined in the "Settings" class
     }
 }
+private void ResetMovement()
+{
+    // Reset movement
+    xInput = 0f;
+    yInput = 0f;
+    isRunning = false;
+    isWalking = false;
+    isIdle = false;
+}
+public void DisablePlayerInputAndResetMovement()
+{
+    DisablePlayerInput();
+    ResetMovement();
 
+
+    EventHandler.CallMovementEvent(xInput, yInput, isWalking, isRunning, isIdle, isCarrying, toolEffect,
+                isUsingToolRight, isUsingToolLeft, isUsingToolUp, isUsingToolDown,
+                isLiftingToolRight, isLiftingToolLeft, isLiftingToolUp, isLiftingToolDown,
+                isPickingRight, isPickingLeft, isPickingUp, isPickingDown,
+                isSwingingToolRight, isSwingingToolLeft, isSwingingToolUp, isSwingingToolDown,
+                false, false, false, false);
+}
+public void DisablePlayerInput()
+{
+    PlayerInputIsDisabled = true;
+}
+public void EnablePlayerInput()
+{
+    PlayerInputIsDisabled = false;
+}
 public Vector3 GetPlayerViewportPosition()
 {
     // Vector3 viewport position for player ((0,0) viewport bottom left, (1,1) viewport top right

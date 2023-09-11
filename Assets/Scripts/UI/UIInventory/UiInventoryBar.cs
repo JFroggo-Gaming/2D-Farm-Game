@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UiInventoryBar : MonoBehaviour
+public class UIInventoryBar : MonoBehaviour
 {   
     [SerializeField] private Sprite blank16x16Ssprite = null;
     [SerializeField] private UIInventorySlot[] inventorySlot = null;
+    public GameObject InventoryBarDraggedItem;
     private RectTransform rectTransform;
 
     private bool _isInventoryBarPositionBottom = true;

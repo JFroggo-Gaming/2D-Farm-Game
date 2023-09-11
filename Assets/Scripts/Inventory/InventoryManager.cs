@@ -79,7 +79,7 @@ public class InventoryManager : SingletonMonobehaviour<InventoryManager>
         }
 
         // Send event that inventory had been updated
-        EventHandler.CallInventoryUptatedEvent(inventoryLocation, inventoryLists[(int)inventoryLocation]);
+        EventHandler.CallInventoryUpdatedEvent(inventoryLocation, inventoryLists[(int)inventoryLocation]);
     }
     
     /// <summary>
@@ -140,6 +140,41 @@ public class InventoryManager : SingletonMonobehaviour<InventoryManager>
         else
         {
             return null;
+        }
+    }
+
+    // Remove an item from the inventory and create a gameObject at the possition this item was dropped
+    public void RemoveItem(InventoryLocation inventoryLocation, int itemCode)
+    {
+        List<InventoryItem> inventoryList = inventoryLists[(int)inventoryLocation];
+
+        // Check if inventory aleady contains the item
+        int itemPosition = FindItemInInventory(inventoryLocation, itemCode);
+
+        if(itemPosition != -1)
+        {
+            RemoveItemAtPosition(inventoryList, itemCode, itemPosition);
+        }
+
+        // Send event that inventory has been updated
+        EventHandler.CallInventoryUpdatedEvent(inventoryLocation, inventoryLists[(int)inventoryLocation]);
+    }
+
+    private void RemoveItemAtPosition(List<InventoryItem> inventoryList, int itemCode, int position)
+    {
+        InventoryItem inventoryItem = new InventoryItem();
+
+        int quantity = inventoryList[position].itemQuantity -1;
+
+        if(quantity > 0)
+        {
+            inventoryItem.itemQuantity = quantity;
+            inventoryItem.itemCode = itemCode;
+            inventoryList[position] = inventoryItem;
+        }
+        else
+        {
+            inventoryList.RemoveAt(position);
         }
     }
 
