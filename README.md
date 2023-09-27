@@ -1,3 +1,3 @@
-# Unity 2D-Farm-Game
-Unity version: 2021.3.7f1
-<br>Hey, I am glad you are here! This game is still in progress, check the commit changes history to follow the process!
+version https://git-lfs.github.com/spec/v1
+oid sha256:b28e83fcde13c791fdbba06efc722fefc8d9dabdb11b06c327740f720be9951d
+size 168
